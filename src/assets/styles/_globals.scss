@@ -34,7 +34,8 @@ a {
   position: relative;
   text-decoration: none;
 }
-.text-link {
+.text-link,
+.link {
   color: var(--accent-secondary);
   border-bottom: 1px solid var(--accent-secondary);
   padding-bottom: var(--spacing-1x);
@@ -232,11 +233,6 @@ ul.list li p {
 ol.list {
   list-style: auto;
   padding-left: 20px;
-}
-.link {
-  color: var(--accent-secondary);
-  border-bottom: 1px solid var(--accent-secondary);
-  padding-bottom: var(--spacing-1x);
 }
 .btn-pill {
   color: var(--text-on-accent);

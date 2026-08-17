@@ -1,17 +1,14 @@
 <template>
   <footer>
     <div class="footer-inner">
-      <p class="text regular">© {{ new Date().getFullYear() }} Designed, written, and coded by <router-link to="/about" class="text regular menu-link" :class="{ selected: route.path === '/about' }">Alex Cerezo</router-link></p>
+      <p class="text regular">© {{ new Date().getFullYear() }} Designed, written, and coded by <router-link to="/about" class="text regular text-link">Alex Cerezo</router-link></p>
       <SocialLinks />
     </div>
   </footer>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
 import SocialLinks from './SocialLinks.vue';
-
-const route = useRoute()
 </script>
 
 <style lang="scss" scoped>
@@ -32,14 +29,6 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.menu-link {
-  color: var(--accent-secondary);
-  border-bottom: 1px solid var(--accent-secondary);
-  padding-bottom: var(--spacing-1x);
-  &.selected {
-    border-bottom-color: var(--accent-secondary);
-  }
 }
 :deep(.social) {
   margin: 0;
