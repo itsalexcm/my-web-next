@@ -30,6 +30,7 @@
         class="case-img case-img-bis"
         :class="imgClass"
         :style="cloneStyle"
+        @transitionend="onCloneTransitionEnd"
       >
         <img :src="src" :alt="alt">
       </div>
@@ -56,6 +57,8 @@ defineProps({
 const rootEl = ref(null);
 const isOpen = ref(false);
 const cloneStyle = ref({});
+const phase = ref('idle');
+let geometry = null;
 let closeTimer = null;
 let listening = false;
 
@@ -82,55 +85,102 @@ const removeListeners = () => {
   window.removeEventListener('resize', closeZoom);
 };
 
+const startBox = (scaled, animate) => {
+  const { start, tx, ty, scale } = geometry;
+  cloneStyle.value = {
+    position: 'absolute',
+    top: `${start.top}px`,
+    left: `${start.left}px`,
+    width: `${start.width}px`,
+    height: `${start.height}px`,
+    transformOrigin: 'top left',
+    transition: animate ? 'transform 0.3s ease-in-out' : 'none',
+    transform: scaled
+      ? `translate(${tx}px, ${ty}px) scale(${scale})`
+      : 'translate(0, 0) scale(1)'
+  };
+};
+
+const finalBox = () => {
+  const { end } = geometry;
+  cloneStyle.value = {
+    position: 'absolute',
+    top: `${end.top}px`,
+    left: `${end.left}px`,
+    width: `${end.width}px`,
+    height: `${end.height}px`,
+    transformOrigin: 'top left',
+    transform: 'none',
+    transition: 'none'
+  };
+};
+
+const measure = (rect) => {
+  const scale = Math.min(window.innerWidth / rect.width, window.innerHeight / rect.height);
+  const width = rect.width * scale;
+  const height = rect.height * scale;
+  const left = (window.innerWidth - width) / 2;
+  const top = (window.innerHeight - height) / 2;
+  return {
+    start: { top: rect.top, left: rect.left, width: rect.width, height: rect.height },
+    end: { top, left, width, height },
+    scale,
+    tx: left - rect.left,
+    ty: top - rect.top
+  };
+};
+
 const openZoom = async () => {
   const rect = rootEl.value?.getBoundingClientRect();
   if (!rect) return;
 
+  geometry = measure(rect);
   isOpen.value = true;
+  phase.value = 'in';
   addListeners();
-  cloneStyle.value = {
-    position: 'absolute',
-    top: `${rect.top}px`,
-    left: `${rect.left}px`,
-    width: `${rect.width}px`,
-    height: `${rect.height}px`,
-    transform: 'translate(0, 0) scale(1)'
-  };
+  startBox(false, false);
 
   await nextTick();
 
-  if (prefersReducedMotion()) return;
-
-  const scale = Math.min(window.innerWidth / rect.width, window.innerHeight / rect.height);
-  const translateX = (window.innerWidth - rect.width * scale) / 2 - rect.left;
-  const translateY = (window.innerHeight - rect.height * scale) / 2 - rect.top;
-
-  requestAnimationFrame(() => {
-    cloneStyle.value = {
-      ...cloneStyle.value,
-      transition: 'transform 0.3s ease-in-out',
-      transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`
-    };
-  });
-};
-
-const closeZoom = () => {
-  if (!isOpen.value) return;
-  removeListeners();
-
   if (prefersReducedMotion()) {
-    isOpen.value = false;
+    finalBox();
+    phase.value = 'shown';
     return;
   }
 
-  cloneStyle.value = {
-    ...cloneStyle.value,
-    transition: 'transform 0.3s ease-in-out',
-    transform: 'translate(0, 0) scale(1)'
-  };
+  requestAnimationFrame(() => {
+    startBox(true, true);
+  });
+};
+
+const onCloneTransitionEnd = (event) => {
+  if (event.propertyName !== 'transform') return;
+  if (phase.value === 'in') {
+    finalBox();
+    phase.value = 'shown';
+  }
+};
+
+const closeZoom = () => {
+  if (!isOpen.value || phase.value === 'out') return;
+  removeListeners();
+
+  if (prefersReducedMotion() || !geometry) {
+    isOpen.value = false;
+    phase.value = 'idle';
+    return;
+  }
+
+  phase.value = 'out';
+  startBox(true, false);
+
+  requestAnimationFrame(() => {
+    startBox(false, true);
+  });
 
   closeTimer = window.setTimeout(() => {
     isOpen.value = false;
+    phase.value = 'idle';
     closeTimer = null;
   }, 300);
 };
