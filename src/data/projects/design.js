@@ -56,7 +56,7 @@ export default {
             customWidth: "custom-width",
             title: "Welcome to eDO",
             text:
-              `<a href="https://www.edreams.com/" target="_blank" class="link">eDreams ODIGEO ↗</a> is <span class="bold">one of the world’s largest online travel agencies</span>, operating 5 brands: eDreams, Go Voyages, Opodo, Travellink, and Liligo. It serves millions of travelers yearly, using technology to simplify trip planning and booking.
+              `<a href="https://www.edreams.com/" target="_blank" class="link">eDreams ODIGEO <span class="arrow arrow-out" aria-hidden="true"></span></a> is <span class="bold">one of the world’s largest online travel agencies</span>, operating 5 brands: eDreams, Go Voyages, Opodo, Travellink, and Liligo. It serves millions of travelers yearly, using technology to simplify trip planning and booking.
               <br /><br />
               With a product organization spanning over <span class="bold">20 designers</span>, <span class="bold">60 engineers</span> and many UX researchers and writers, consistency and efficiency were becoming harder to maintain as the platform evolved.`
           }

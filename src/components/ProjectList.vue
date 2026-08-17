@@ -23,7 +23,7 @@
               </div>
               <h3 class="work-title">{{ project.title }}</h3>
               <p class="work-desc text regular">{{ project.intro }}</p>
-              <p class="btn-pill work-button text regular">Case study →</p>
+              <p class="btn-pill work-button text regular">Case study <span class="arrow" aria-hidden="true"></span></p>
             </div>
           </div>
         </router-link>

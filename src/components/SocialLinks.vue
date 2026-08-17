@@ -1,12 +1,10 @@
 <template>
   <div class="social">
-    <a :href="`mailto:${site.email}`" class="text-link text regular">{{ site.email }} ↗</a>
+    <a :href="`mailto:${site.email}`" class="text-link text regular">{{ site.email }} <span class="arrow arrow-out" aria-hidden="true"></span></a>
     <span class="text large">·</span>
     <a
       :href="site.linkedin"
       class="text-link text regular"
-      target="_blank"
-      rel="noopener noreferrer"
     >Linkedin</a>
   </div>
 </template>

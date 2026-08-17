@@ -3,7 +3,7 @@
     <div class="not-found">
       <h1 class="hero-heading">Page not found</h1>
       <p class="text hero">That page doesn’t exist. Head back to work or about.</p>
-      <router-link to="/" class="btn-pill text regular">← Back to work</router-link>
+      <router-link to="/" class="btn-pill text regular"><span class="arrow arrow-back" aria-hidden="true"></span> Back to work</router-link>
     </div>
   </LayoutComponent>
 </template>

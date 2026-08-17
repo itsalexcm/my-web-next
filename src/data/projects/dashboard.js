@@ -58,7 +58,7 @@ export default {
             customWidth: "custom-width",
             title: "What is Finsit?",
             text:
-              `<a href="https://www.wolterskluwer.com/" target="_blank" class="link">Finsit ↗</a> is Wolters Kluwer's online solution that <span class="bold">simplifies complex financial data into easy-to-understand infographics</span>. It presents accounting information visually, with comparisons and trends, enabling users to analyze data more effectively.
+              `<a href="https://www.wolterskluwer.com/" target="_blank" class="link">Finsit <span class="arrow arrow-out" aria-hidden="true"></span></a> is Wolters Kluwer's online solution that <span class="bold">simplifies complex financial data into easy-to-understand infographics</span>. It presents accounting information visually, with comparisons and trends, enabling users to analyze data more effectively.
               <br /><br />
               The platform is built around three core pillars:`
           },

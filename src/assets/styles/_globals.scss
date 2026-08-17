@@ -40,6 +40,23 @@ a {
   border-bottom: 1px solid var(--accent-secondary);
   padding-bottom: var(--spacing-1x);
 }
+.arrow {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  flex-shrink: 0;
+  vertical-align: -0.08em;
+  background-color: currentColor;
+  transform-origin: center;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M8.22 2.97a.75.75 0 0 1 1.06 0l4.75 4.75a.75.75 0 0 1 0 1.06l-4.75 4.75a.75.75 0 1 1-1.06-1.06l3.47-3.47H2.75a.75.75 0 0 1 0-1.5h8.94L8.22 4.03a.75.75 0 0 1 0-1.06z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M8.22 2.97a.75.75 0 0 1 1.06 0l4.75 4.75a.75.75 0 0 1 0 1.06l-4.75 4.75a.75.75 0 1 1-1.06-1.06l3.47-3.47H2.75a.75.75 0 0 1 0-1.5h8.94L8.22 4.03a.75.75 0 0 1 0-1.06z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.arrow-out {
+  transform: rotate(-45deg);
+}
+.arrow-back {
+  transform: rotate(180deg);
+}
 p {
   margin: 0;
   padding: 0;
@@ -238,6 +255,8 @@ ol.list {
   color: var(--text-on-accent);
   padding: var(--spacing-3x) var(--spacing-5x);
   display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
   transition: background-color .3s ease, color .3s ease;
   background-color: var(--accent-primary);
   border-radius: var(--radius-pill);

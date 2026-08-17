@@ -27,14 +27,14 @@
         :to="`/work/${prevCase.id}`"
         class="btn-pill nav-button prev text regular"
       >
-        ← Prev
+        <span class="arrow arrow-back" aria-hidden="true"></span> Prev
       </RouterLink>
       <RouterLink
         v-if="nextCase"
         :to="`/work/${nextCase.id}`"
         class="btn-pill nav-button next text regular"
       >
-        Next →
+        Next <span class="arrow" aria-hidden="true"></span>
       </RouterLink>
     </div>
   </LayoutComponent>

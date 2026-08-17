@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { nextTick, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
@@ -20,9 +20,13 @@ defineProps({
 })
 const route = useRoute()
 
-onMounted(() => {
+const playFadeIn = async () => {
+  await nextTick()
   runFadeIn()
-})
+}
+
+onMounted(playFadeIn)
+watch(() => route.fullPath, playFadeIn)
 </script>
 
 <style lang="scss" scoped>

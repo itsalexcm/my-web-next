@@ -55,7 +55,7 @@ export default {
             customWidth: "custom-width",
             title: "About Greyfinch",
             text:
-              `<a href="https://greyfinch.com/" target="_blank" class="link">Greyfinch ↗</a> is a <span class="bold">Practice Management Software (PMS)</span> designed primarily for orthodontic clinics. Its platform enables the management of tasks ranging from patient acquisition to appointment scheduling, billing, and communication.
+              `<a href="https://greyfinch.com/" target="_blank" class="link">Greyfinch <span class="arrow arrow-out" aria-hidden="true"></span></a> is a <span class="bold">Practice Management Software (PMS)</span> designed primarily for orthodontic clinics. Its platform enables the management of tasks ranging from patient acquisition to appointment scheduling, billing, and communication.
               <br /><br />
               At the heart of the platform lies the Calendar, a crucial tool for all three primary user roles: doctors, front-desk, and assistants. It allows users to manage appointments, view daily schedules, and organize doctor chair assignments at a glance.`
           }

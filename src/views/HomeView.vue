@@ -11,7 +11,7 @@
     <ProjectList :projects="projects" />
     <div class="past-link">
       <router-link to="/past-work">
-        <p class="text-link text regular">Past work →</p>
+        <p class="text-link text regular">Past work <span class="arrow" aria-hidden="true"></span></p>
       </router-link>
     </div>
   </LayoutComponent>

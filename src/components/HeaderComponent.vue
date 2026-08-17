@@ -33,7 +33,7 @@
                 :href="site.resumeUrl"
                 target="_blank"
                 rel="noopener noreferrer"
-              >Resume ↗</a>
+              >Resume <span class="arrow arrow-out" aria-hidden="true"></span></a>
             </li>
           </ul>
         </nav>
@@ -91,7 +91,7 @@ About
                   target="_blank"
                   rel="noopener noreferrer"
                   @click="closeMenu"
-                >Resume ↗</a>
+                >Resume <span class="arrow arrow-out" aria-hidden="true"></span></a>
               </li>
             </ul>
           </nav>
