@@ -1,10 +1,5 @@
 <template>
-  <HeaderComponent
-    :isCaseView="isCaseView"
-    :title="title"
-    :subtitle="subtitle"
-    :caseData="caseData"
-  />
+  <HeaderComponent />
   <main :data-project="caseData?.id">
     <div class="fade-in" :key="route.fullPath">
       <slot />
@@ -14,20 +9,23 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
+import { runFadeIn } from '@/composables/useFadeIn.js'
 
 defineProps({
-  isCaseView: Boolean,
-  title: String,
-  subtitle: String,
   caseData: Object
 })
 const route = useRoute()
+
+onMounted(() => {
+  runFadeIn()
+})
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 main {
   width: 100%;
   max-width: var(--width-xl);

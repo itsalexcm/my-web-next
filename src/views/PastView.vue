@@ -12,23 +12,14 @@
         </div>
       </div>
       <div class="past-content">
-        <img src="/assets/imgs/past/past00.png" alt="Sample">
-        <img src="/assets/imgs/past/past01.png" alt="Sample">
-        <img src="/assets/imgs/past/past02.png" alt="Sample">
-        <img src="/assets/imgs/past/past03.png" alt="Sample">
-        <img src="/assets/imgs/past/past04.png" alt="Sample">
-        <img src="/assets/imgs/past/past05.png" alt="Sample">
-        <img src="/assets/imgs/past/past06.png" alt="Sample">
-        <img src="/assets/imgs/past/past07.png" alt="Sample">
-        <img src="/assets/imgs/past/past08.png" alt="Sample">
-        <img src="/assets/imgs/past/past09.png" alt="Sample">
-        <img src="/assets/imgs/past/past10.png" alt="Sample">
-        <img src="/assets/imgs/past/past11.png" alt="Sample">
-        <img src="/assets/imgs/past/past12.png" alt="Sample">
-        <img src="/assets/imgs/past/past13.png" alt="Sample">
-        <img src="/assets/imgs/past/past14.png" alt="Sample">
-        <img src="/assets/imgs/past/past15.png" alt="Sample">
-        <img src="/assets/imgs/past/past16.png" alt="Sample">
+        <img
+          v-for="(image, index) in pastWork"
+          :key="image.src"
+          :src="image.src"
+          :alt="image.alt"
+          :loading="index === 0 ? 'eager' : 'lazy'"
+          decoding="async"
+        >
       </div>
     </div>
   </LayoutComponent>
@@ -36,27 +27,28 @@
 
 <script setup>
 import LayoutComponent from '@/components/LayoutComponent.vue'
+import { pastWork } from '@/data/site.js'
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .past-work {
   display: block;
-  .past-top {
-    max-width: var(--width-md);
-    text-align: center;
-    margin: 0 auto var(--spacing-30x) auto;
-    .past-overview {
-      margin-top: 40px;
-    }
-  }
-  .past-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-20x);
-    margin-bottom: 0;
-    overflow: hidden;
-    transition: background-color .3s ease;
-  }
+}
+.past-top {
+  max-width: var(--width-md);
+  text-align: center;
+  margin: 0 auto var(--spacing-30x) auto;
+}
+.past-overview {
+  margin-top: var(--spacing-10x);
+}
+.past-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20x);
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: background-color .3s ease;
 }
 </style>

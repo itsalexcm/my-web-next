@@ -2,18 +2,30 @@
   <div class="image-slider">
     <div class="slide">
       <div class="slide-inner">
-        <button class="nav prev" @click="prev" :disabled="currentIndex === 0">‹</button>
+        <button
+          class="nav prev"
+          type="button"
+          @click="prev"
+          :disabled="currentIndex === 0"
+          aria-label="Previous image"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
 
-        <div class="case-img">
-          <img
-            :src="images[currentIndex].src"
-            :alt="images[currentIndex].alt"
-            class="case-img-zoom"
-          />
-          <button class="case-img-open"></button>
-        </div>
+        <ZoomableImage
+          :src="images[currentIndex].src"
+          :alt="images[currentIndex].alt"
+        />
 
-        <button class="nav next" @click="next" :disabled="currentIndex === images.length - 1">›</button>
+        <button
+          class="nav next"
+          type="button"
+          @click="next"
+          :disabled="currentIndex === images.length - 1"
+          aria-label="Next image"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
       </div>
 
       <p v-if="caption" class="text regular caption">{{ caption }}</p>
@@ -23,6 +35,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import ZoomableImage from '@/components/ZoomableImage.vue'
 
 const props = defineProps({
   images: {
@@ -47,42 +60,30 @@ const prev = () => {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .image-slider {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--spacing-4x);
   width: 100%;
   margin: 0 auto;
 }
-
 .image-slider + .image-slider {
   margin: var(--spacing-10x) auto;
 }
-
 .slide {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-.slide img {
+.slide :deep(img) {
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: var(--spacing-4x);
-  transition: background-color 0.3s ease;
 }
-
-.nav {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
 .slide-inner {
   position: relative;
   width: 100%;
@@ -90,7 +91,6 @@ const prev = () => {
   align-items: center;
   justify-content: center;
 }
-
 .nav {
   position: absolute;
   top: 50%;
@@ -102,11 +102,9 @@ const prev = () => {
   cursor: pointer;
   z-index: 2;
 }
-
 .nav.prev {
   left: var(--spacing-4x);
 }
-
 .nav.next {
   right: var(--spacing-4x);
 }

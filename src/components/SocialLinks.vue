@@ -1,32 +1,41 @@
 <template>
   <div class="social">
-    <a href="mailto:hello.alexcerezo@gmail.com" class="social-link text regular">hello.alexcerezo@gmail.com ↗</a>
+    <a :href="`mailto:${site.email}`" class="social-link text regular">{{ site.email }} ↗</a>
     <span class="text large">·</span>
-    <a href="https://www.linkedin.com/in/alexcerezo/" class="social-link text regular">Linkedin</a>
+    <a
+      :href="site.linkedin"
+      class="social-link text regular"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Linkedin</a>
   </div>
 </template>
 
-<style lang="scss">
+<script setup>
+import { site } from '@/data/site.js';
+</script>
+
+<style lang="scss" scoped>
 .social {
   display: flex;
   gap: var(--spacing-4x);
   margin-top: var(--spacing-4x);
-  .social-link {
-    color: var(--accent-secondary);
-    border-bottom: 1px solid var(--accent-secondary);
-    padding-bottom: var(--spacing-1x);
-    &:hover {
-      color: var(--accent-secondary);
-      border-bottom-color: var(--accent-secondary);
-    }
-  }
-  span {
-    color: var(--accent-secondary);
+}
+.social-link {
+  color: var(--accent-secondary);
+  border-bottom: 1px solid var(--accent-secondary);
+  padding-bottom: var(--spacing-1x);
+  &:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
   }
 }
-@media (max-width: 720px) {
-	.social {
-		flex-wrap: wrap;
-	}
+span {
+  color: var(--accent-secondary);
+}
+@include mobile {
+  .social {
+    flex-wrap: wrap;
+  }
 }
 </style>

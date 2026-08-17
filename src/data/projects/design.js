@@ -2,7 +2,7 @@ export default {
   id: "design",
   title: "Design System at eDreams",
   subtitle: "How we built a scalable system to unify 5 brands, streamline workflows, and empower cross-functional product teams.",
-  thumbnail: "/assets/imgs/edreams/ed_img_01.png",
+  thumbnail: "/assets/imgs/edreams/ed_img_01.webp",
   intro: "Unifying 5 brands with a scalable, cross-functional design system.",
   tags: ["Design System", "Travel", "Tokens"],
   components: [
@@ -11,7 +11,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/edreams/ed_img_01.png",
+            src: "/assets/imgs/edreams/ed_img_01.webp",
             alt: "eDreams Design System"
           }
         ],
@@ -152,7 +152,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/edreams/ed_img_02.png",
+            src: "/assets/imgs/edreams/ed_img_02.webp",
             alt: "UI components"
           }
         ],
@@ -214,11 +214,11 @@ export default {
         layout: "wrap",
         images: [
           {
-            src: "/assets/imgs/edreams/ed_img_03.png",
+            src: "/assets/imgs/edreams/ed_img_03.webp",
             alt: "Spacing overview"
           },
           {
-            src: "/assets/imgs/edreams/ed_img_04.png",
+            src: "/assets/imgs/edreams/ed_img_04.webp",
             alt: "Iconography examples from the system"
           }
         ],
@@ -230,11 +230,11 @@ export default {
       data: {
         customClass: 'margin-top',
         images: [
-          { src: '/assets/imgs/edreams/ed_carousel_01.png', alt: 'Design System example 1' },
-          { src: '/assets/imgs/edreams/ed_carousel_02.png', alt: 'Design System example 2' },
-          { src: '/assets/imgs/edreams/ed_carousel_03.png', alt: 'Design System example 3' },
-          { src: '/assets/imgs/edreams/ed_carousel_04.png', alt: 'Design System example 4' },
-          { src: '/assets/imgs/edreams/ed_carousel_05.png', alt: 'Design System example 5' }
+          { src: '/assets/imgs/edreams/ed_carousel_01.webp', alt: 'Design System example 1' },
+          { src: '/assets/imgs/edreams/ed_carousel_02.webp', alt: 'Design System example 2' },
+          { src: '/assets/imgs/edreams/ed_carousel_03.webp', alt: 'Design System example 3' },
+          { src: '/assets/imgs/edreams/ed_carousel_04.webp', alt: 'Design System example 4' },
+          { src: '/assets/imgs/edreams/ed_carousel_05.webp', alt: 'Design System example 5' }
         ]
       }
     },
@@ -259,7 +259,7 @@ export default {
       data: {
         images: [
           {
-            src: '/assets/imgs/edreams/ed_img_05.png',
+            src: '/assets/imgs/edreams/ed_img_05.webp',
             alt: 'Component structure with layout guidelines'
           }
         ],
@@ -289,11 +289,11 @@ export default {
       data: {
         images: [
           {
-            src: '/assets/imgs/edreams/ed_img_06.png',
+            src: '/assets/imgs/edreams/ed_img_06.webp',
             alt: 'Storybook'
           },
           {
-            src: '/assets/imgs/edreams/ed_img_07.png',
+            src: '/assets/imgs/edreams/ed_img_07.webp',
             alt: 'Accessibility'
           }
         ],

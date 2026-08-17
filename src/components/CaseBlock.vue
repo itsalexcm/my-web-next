@@ -1,5 +1,5 @@
 <template>
-  <div :class="['case-block', direction || '', align || '', customMargin || '']">
+  <div :class="['case-block', direction || '', align || '', customMargin || '', customMargin0 || '']">
     <h2 class="block-heading" v-if="title">{{ title }}</h2>
     <div :class="['block-content', directionContent || '', alignContent || '']">
       <template
@@ -35,32 +35,30 @@
             v-if="block.images && block.images.length"
             class="case-img-multi"
           >
-            <div
+            <ZoomableImage
               v-for="(img, i) in block.images"
               :key="'img-' + i"
-              :class="['case-img', img.class]"
-            >
-              <img :src="img.src" :alt="img.alt" class="case-img-zoom" />
-              <button class="case-img-open"></button>
-            </div>
+              :src="img.src"
+              :alt="img.alt"
+              :img-class="img.class"
+            />
           </div>
 
-          <div v-else-if="block.image" :class="['case-img', block.image.class]">
-            <img :src="block.image.src" :alt="block.image.alt" class="case-img-zoom" />
-            <button class="case-img-open"></button>
-          </div>
-          <component
+          <ZoomableImage
+            v-else-if="block.image"
+            :src="block.image.src"
+            :alt="block.image.alt"
+            :img-class="block.image.class"
+          />
+          <CasePanel
             v-if="block.panels && block.panels.length"
-            :is="CasePanel"
             :panels="block.panels"
             :variant="block.panelStyle || 'default'"
           />
-          <component
+          <CasePilars
             v-if="block.pilars && block.pilars.length"
-            :is="CasePilars"
             :content="block.pilars"
-          >
-          </component>
+          />
         </div>
       </template>
     </div>
@@ -69,7 +67,8 @@
 
 <script setup>
 import CasePanel from '@/components/CasePanel.vue'
-import CasePilars from '@/components/CasePilars.vue';
+import CasePilars from '@/components/CasePilars.vue'
+import ZoomableImage from '@/components/ZoomableImage.vue'
 
 defineProps({
   content: {
@@ -82,23 +81,19 @@ defineProps({
   margin: String,
   directionContent: String,
   alignContent: String,
-  customMargin: String
+  customMargin: String,
+  customMargin0: String
 });
 </script>
 
-<style lang="scss">
-div[id]::before {
-  content: "";
-  display: block;
-  height: 240px;
-  margin-top: -240px;
-}
+<style lang="scss" scoped>
 .case-block {
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: var(--spacing-6x);
   margin: var(--spacing-30x) auto;
+  scroll-margin-top: 120px;
   &:last-child {
     margin-bottom: 0;
   }
@@ -117,41 +112,34 @@ div[id]::before {
   &.custom-margin-0 {
     margin: 0;
   }
-  .block-content {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--spacing-10x);
-    &.direction-column {
-      flex-direction: column;
-      .block-item {
-        max-width: 100%;
-      }
-    }
-    &.align-center {
-      align-items: center;
-    }
+}
+.block-content {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-10x);
+  &.direction-column {
+    flex-direction: column;
     .block-item {
-      flex: 1 1 0;
-      display: flex;
-      flex-direction: column;
-      &.custom-width {
-        max-width: var(--width-md);
-      }
-      p {
-        &.margin-bottom {
-          margin-bottom: var(--spacing-10x);
-        }
-        span.bold {
-          font-weight: 700;
-        }
-      }
-      .block-img {
-        img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-      }
+      max-width: 100%;
+    }
+  }
+  &.align-center {
+    align-items: center;
+  }
+}
+.block-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  &.custom-width {
+    max-width: var(--width-md);
+  }
+  p {
+    &.margin-bottom {
+      margin-bottom: var(--spacing-10x);
+    }
+    :deep(span.bold) {
+      font-weight: var(--font-weight-bold);
     }
   }
 }
@@ -160,16 +148,16 @@ div[id]::before {
   flex-wrap: wrap;
   gap: var(--spacing-8x);
   flex-direction: column;
-  .case-img {
+  :deep(.case-img) {
     flex: 1 1 200px;
   }
 }
-@media (max-width: 720px) {
+@include mobile {
   .case-block {
     flex-direction: column;
-    .block-content {
-      flex-direction: column;
-    }
+  }
+  .block-content {
+    flex-direction: column;
   }
 }
 </style>

@@ -2,13 +2,12 @@
   <header>
     <div class="header-container">
       <div class="alex">
-        <h1>Alex Cerezo 👋</h1>
-        <router-link to="/">
+        <router-link to="/" class="logo-link" aria-label="Alex Cerezo, home">
           <LogoComponent />
         </router-link>
       </div>
       <menu>
-        <div class="menu-desktop">
+        <nav class="menu-desktop" aria-label="Primary">
           <ul>
             <li>
               <router-link
@@ -29,10 +28,15 @@
               </router-link>
             </li>
             <li>
-              <a class="text regular menu-link" rel="noopener noreferrer" href="https://www.dropbox.com/scl/fi/0kk13ctsil7xpftstswy0/AlexCerezo_Resume.pdf?rlkey=hcu988vxsrbncwb09himqwdwp&st=2feyayq7&dl=0" target="_blank">Resume ↗</a>
+              <a
+                class="text regular menu-link"
+                :href="site.resumeUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Resume ↗</a>
             </li>
           </ul>
-        </div>
+        </nav>
 
         <button
           class="hamburger"
@@ -40,7 +44,7 @@
           @click="toggleMenu"
           :aria-expanded="isMenuOpen.toString()"
           aria-controls="mobileMenu"
-          aria-label="Open menu"
+          :aria-label="isMenuOpen ? 'Close menu' : 'Open menu'"
         >
           <span class="bar"></span>
           <span class="bar"></span>
@@ -58,32 +62,36 @@
           class="mobile-menu-backdrop"
           @click.self="closeMenu"
         >
-          <nav id="mobileMenu" class="mobile-menu" role="menu">
+          <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile">
             <ul>
-              <li role="menuitem">
+              <li>
                 <router-link
                   to="/"
                   class="text regular menu-link"
                   :class="{ selected: route.path === '/' || route.path.startsWith('/work/') }"
                   @click="closeMenu"
-                >Work</router-link>
+                >
+Work
+</router-link>
               </li>
-              <li role="menuitem">
+              <li>
                 <router-link
                   to="/about"
                   class="text regular menu-link"
                   :class="{ selected: route.path === '/about' }"
                   @click="closeMenu"
-                >About</router-link>
+                >
+About
+</router-link>
               </li>
-              <li role="menuitem">
+              <li>
                 <a
                   class="text regular menu-link"
-                  href="https://www.dropbox.com/scl/fi/0kk13ctsil7xpftstswy0/AlexCerezo_Resume.pdf?rlkey=hcu988vxsrbncwb09himqwdwp&st=2feyayq7&dl=0"
+                  :href="site.resumeUrl"
                   target="_blank"
                   rel="noopener noreferrer"
                   @click="closeMenu"
-                >Jaja ↗</a>
+                >Resume ↗</a>
               </li>
             </ul>
           </nav>
@@ -98,6 +106,7 @@
   import { useRoute } from 'vue-router';
   import LogoComponent from '@/components/LogoComponent.vue';
   import ThemeToggle from '@/components/ThemeToggle.vue';
+  import { site } from '@/data/site.js';
 
   const route = useRoute();
 
@@ -112,7 +121,7 @@
   onBeforeUnmount(() => { window.removeEventListener('keydown', onKeydown); });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   header {
     position: sticky;
     top: 0;
@@ -123,70 +132,60 @@
     width: 100%;
     padding: var(--spacing-10x) 0;
     transition: background-color .3s ease;
-    .header-container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      box-sizing: border-box;
-      max-width: var(--width-xl);
-      padding: 0 var(--spacing-10x);
-      menu {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--spacing-6x);
-        padding: 0;
-        margin: 0;
-        cursor: default;
-        ul {
-          display: flex;
-          align-items: center;
-          gap: var(--spacing-6x);
-          margin: 3px 0 0 0;
-          padding: 0;
-          .menu-link {
-            color: var(--text-primary);
-            border-bottom: 1px solid transparent;
-            padding-bottom: var(--spacing-1x);
-            &.selected {
-              border-bottom-color: var(--text-primary);
-            }
-          }
-        }
-        .menu-toggle {
-          width: 40px;
-          height: 40px;
-          background-color: var(--bg-secondary);
-          border-radius: 40px;
-          transition: background-color .3s ease;
-        }
-      }
-    }
-    .alex {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      gap: var(--spacing-4x);
-      h1 {
-        color: transparent;
-        line-height: 1;
-        &::selection {
-          color: #1A1A1A;
-        }
-      }
+  }
+  .header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    max-width: var(--width-xl);
+    padding: 0 var(--spacing-10x);
+  }
+  menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-6x);
+    padding: 0;
+    margin: 0;
+    cursor: default;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-6x);
+    margin: 3px 0 0 0;
+    padding: 0;
+  }
+  .menu-link {
+    color: var(--text-primary);
+    border-bottom: 1px solid transparent;
+    padding-bottom: var(--spacing-1x);
+    &.selected {
+      border-bottom-color: var(--text-primary);
     }
   }
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-pill);
+    transition: background-color .3s ease;
+  }
+  .alex {
+    display: flex;
+    align-items: center;
+  }
+  .logo-link {
+    display: inline-flex;
+  }
 
-  /* Fade transition matching site style */
   .fade-enter-active, .fade-leave-active { transition: opacity .25s ease; }
   .fade-enter-from, .fade-leave-to { opacity: 0; }
-
-  /* Animation extras for sheet from bottom */
   .fade-enter-from .mobile-menu ul { transform: translateY(8px) scale(.98); opacity: 0; }
   .fade-enter-active .mobile-menu ul { transition: transform .25s ease, opacity .25s ease; }
   .fade-leave-to .mobile-menu ul { transform: translateY(8px) scale(.98); opacity: 0; }
 
-  /* Hamburger (hidden on desktop) */
   .hamburger {
     display: none;
     position: relative;
@@ -196,7 +195,7 @@
     padding: 0;
     background-color: var(--bg-secondary);
     transition: background-color 0.3s ease;
-    border-radius: 40px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
   }
   .hamburger .bar {
@@ -212,7 +211,6 @@
   .hamburger .bar:nth-child(2) { top: 19px; }
   .hamburger .bar:nth-child(3) { top: 25px; }
 
-  /* Mobile overlay */
   .mobile-menu-backdrop {
     position: fixed;
     inset: 0;
@@ -236,30 +234,23 @@
     border-radius: 16px;
     backdrop-filter: blur(6px);
   }
-
-  .mobile-menu a, .mobile-menu {
+  .mobile-menu a {
     border-bottom: 1px solid transparent;
     padding-bottom: var(--spacing-1x);
-  }
-
-  .mobile-menu a, .mobile-menu .router-link-active {
     font: inherit;
     color: var(--text-primary);
     text-decoration: none;
   }
-
-  .mobile-menu a.selected, .mobile-menu .router-link-active {
+  .mobile-menu a.selected {
     border-bottom-color: var(--text-primary);
   }
-
-  /* Desktop vs mobile visibility */
   .menu-desktop { display: flex; }
 
-  @media (max-width: 720px) {
-    header .header-container menu {
+  @include mobile {
+    menu {
       gap: var(--spacing-2x);
     }
-    header .header-container menu .menu-desktop { display: none; }
-    header .header-container menu .hamburger { display: inline-block; }
+    .menu-desktop { display: none; }
+    .hamburger { display: inline-block; }
   }
 </style>

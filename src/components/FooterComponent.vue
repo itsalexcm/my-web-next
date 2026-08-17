@@ -14,7 +14,7 @@ import SocialLinks from './SocialLinks.vue';
 const route = useRoute()
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 footer {
   padding: var(--spacing-30x) var(--spacing-10x) var(--spacing-10x);
   margin: 0 auto;
@@ -25,42 +25,37 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  .footer-inner {
-    width: 100%;
-    padding-top: var(--spacing-10x);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p {
-      margin: 0;
-      a {
-        &.menu-link {
-          color: var(--accent-secondary);
-          border-bottom: 1px solid var(--accent-secondary);
-          padding-bottom: var(--spacing-1x);
-          &.selected {
-            border-bottom-color: var(--accent-secondary);
-          }
-        }
-      }
-    }
-    .social {
-      margin: 0;
-    }
+}
+.footer-inner {
+  width: 100%;
+  padding-top: var(--spacing-10x);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-link {
+  color: var(--accent-secondary);
+  border-bottom: 1px solid var(--accent-secondary);
+  padding-bottom: var(--spacing-1x);
+  &.selected {
+    border-bottom-color: var(--accent-secondary);
   }
 }
-@media (max-width: 720px) {
+:deep(.social) {
+  margin: 0;
+}
+@include mobile {
   footer {
     padding-top: var(--spacing-6x);
-    .footer-inner {
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      .social {
-        margin-top: var(--spacing-4x);
-      }
-    }
+  }
+  .footer-inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  :deep(.social) {
+    margin-top: var(--spacing-4x);
   }
 }
 </style>

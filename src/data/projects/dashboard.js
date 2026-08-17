@@ -2,7 +2,7 @@ export default {
   id: "dashboard",
   title: "Improving the dashboard experience",
   subtitle: "This case study explores how we improved the clarity and usability of Finsit’s dashboard, a tool used by accountants and their clients to visualize financial data.",
-  thumbnail: "/assets/imgs/finsit/wk_img_01.png",
+  thumbnail: "/assets/imgs/finsit/wk_img_01.webp",
   intro: "Making Finsit’s financial data easier to explore and understand.",
   tags: ["Data", "Financial", "Product Design"],
   components: [
@@ -11,7 +11,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_01.png",
+            src: "/assets/imgs/finsit/wk_img_01.webp",
             alt: "Finsit"
           },
         ],
@@ -173,7 +173,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_02.png",
+            src: "/assets/imgs/finsit/wk_img_02.webp",
             alt: "Finsit"
           }
         ]
@@ -202,11 +202,11 @@ export default {
         layout: "wrap",
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_03.png",
+            src: "/assets/imgs/finsit/wk_img_03.webp",
             alt: "Business breakdown"
           },
           {
-            src: "/assets/imgs/finsit/wk_img_04.png",
+            src: "/assets/imgs/finsit/wk_img_04.webp",
             alt: "Profit & Loss"
           }
         ],
@@ -274,7 +274,7 @@ export default {
         transparent: "yes",
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_05.png",
+            src: "/assets/imgs/finsit/wk_img_05.webp",
             alt: "Research results"
           }
         ],
@@ -346,7 +346,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_06.png",
+            src: "/assets/imgs/finsit/wk_img_06.webp",
             alt: "UI color system"
           }
         ],
@@ -381,7 +381,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_07.png",
+            src: "/assets/imgs/finsit/wk_img_07.webp",
             alt: "Finsit",
             borderRadius: "custom-01"
           }
@@ -393,7 +393,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/finsit/wk_img_08.png",
+            src: "/assets/imgs/finsit/wk_img_08.webp",
             alt: "Finsit",
             borderRadius: "custom-02"
           }

@@ -2,7 +2,7 @@ export default {
   id: "calendar",
   title: "Simplifying the scheduling process",
   subtitle: "The scheduling experience at Greyfinch was redesigned to make appointment management faster, clearer, and more reliable for clinic staff.",
-  thumbnail: "/assets/imgs/greyfinch/gf_img_01.png",
+  thumbnail: "/assets/imgs/greyfinch/gf_img_01.webp",
   intro: "Streamlined appointment scheduling for clinic staff at Greyfinch.",
   tags: ["Calendar", "Health", "Product Design"],
   components: [
@@ -11,7 +11,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_01.png",
+            src: "/assets/imgs/greyfinch/gf_img_01.webp",
             alt: "Greyfinch calendar"
           }
         ],
@@ -68,7 +68,7 @@ export default {
         transparent: "yes",
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_02.png",
+            src: "/assets/imgs/greyfinch/gf_img_02.webp",
             alt: "Greyfinch PMS"
           }
         ],
@@ -141,7 +141,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_03.png",
+            src: "/assets/imgs/greyfinch/gf_img_03.webp",
             alt: "Patient info"
           }
         ],
@@ -170,7 +170,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_04.png",
+            src: "/assets/imgs/greyfinch/gf_img_04.webp",
             alt: "Scheduling options"
           }
         ],
@@ -274,7 +274,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_05.png",
+            src: "/assets/imgs/greyfinch/gf_img_05.webp",
             alt: "User journey"
           }
         ],
@@ -303,11 +303,11 @@ export default {
         layout: "wrap",
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_06.png",
+            src: "/assets/imgs/greyfinch/gf_img_06.webp",
             alt: "Old structure"
           },
           {
-            src: "/assets/imgs/greyfinch/gf_img_07.png",
+            src: "/assets/imgs/greyfinch/gf_img_07.webp",
             alt: "Old structure"
           }
         ],
@@ -332,11 +332,11 @@ export default {
         layout: "wrap",
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_08.png",
+            src: "/assets/imgs/greyfinch/gf_img_08.webp",
             alt: "New structure"
           },
           {
-            src: "/assets/imgs/greyfinch/gf_img_09.png",
+            src: "/assets/imgs/greyfinch/gf_img_09.webp",
             alt: "New structure"
           }
         ],
@@ -361,13 +361,13 @@ export default {
       type: 'CarouselComponent',
       data: {
         images: [
-          { src: '/assets/imgs/greyfinch/gf_carousel_01.png', alt: 'Image 01' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_02.png', alt: 'Image 02' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_03.png', alt: 'Image 03' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_04.png', alt: 'Image 04' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_05.png', alt: 'Image 05' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_06.png', alt: 'Image 06' },
-          { src: '/assets/imgs/greyfinch/gf_carousel_07.png', alt: 'Image 07' }
+          { src: '/assets/imgs/greyfinch/gf_carousel_01.webp', alt: 'Image 01' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_02.webp', alt: 'Image 02' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_03.webp', alt: 'Image 03' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_04.webp', alt: 'Image 04' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_05.webp', alt: 'Image 05' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_06.webp', alt: 'Image 06' },
+          { src: '/assets/imgs/greyfinch/gf_carousel_07.webp', alt: 'Image 07' }
         ]
       }
     },
@@ -400,7 +400,7 @@ export default {
         content: [
           {
             image:  {
-              src: "/assets/imgs/greyfinch/gf_img_10.png",
+              src: "/assets/imgs/greyfinch/gf_img_10.webp",
               alt: "Patient",
               class: "case-img-inline"
             }
@@ -425,7 +425,7 @@ export default {
         content: [
           {
             image:  {
-              src: "/assets/imgs/greyfinch/gf_img_11.png",
+              src: "/assets/imgs/greyfinch/gf_img_11.webp",
               alt: "Scheduling",
               class: "case-img-inline"
             }
@@ -463,7 +463,7 @@ export default {
       data: {
         images: [
           {
-            src: "/assets/imgs/greyfinch/gf_img_12.png",
+            src: "/assets/imgs/greyfinch/gf_img_12.webp",
             alt: "Greyfinch calendar"
           }
         ],

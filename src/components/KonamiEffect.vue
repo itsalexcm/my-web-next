@@ -14,11 +14,11 @@ const showEffect = ref(false);
 const emojis = ref([]);
 
 const activateEffect = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const sound = new Audio('/assets/sounds/storms.mp3');
   sound.currentTime = 0;
-  sound.play().catch(() => {
-    console.warn('Sound blocked by browser autoplay policy');
-  });
+  sound.play().catch(() => {});
   showEffect.value = true;
 
   for (let i = 0; i < 100; i++) {

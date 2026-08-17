@@ -1,181 +1,57 @@
-// INTER
-
 @font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 800;
-	src:
-		local("Inter-ExtraBold"),
-		url("@/assets/fonts/inter/Inter-ExtraBold.ttf") format("truetype");
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("@/assets/fonts/inter/Inter-Regular.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 800;
-	src:
-		local("Inter-ExtraBoldItalic"),
-		url("@/assets/fonts/inter/Inter-ExtraBoldItalic.ttf") format("truetype");
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("@/assets/fonts/inter/Inter-Italic.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 700;
-	src:
-		local("Inter-Bold"),
-		url("@/assets/fonts/inter/Inter-Bold.ttf") format("truetype");
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("@/assets/fonts/inter/Inter-Medium.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 700;
-	src:
-		local("Inter-BoldItalic"),
-		url("@/assets/fonts/inter/Inter-BoldItalic.ttf") format("truetype");
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("@/assets/fonts/inter/Inter-Bold.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 600;
-	src:
-		local("Inter-SemiBold"),
-		url("@/assets/fonts/inter/Inter-SemiBold.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 600;
-	src:
-		local("Inter-SemiBoldItalic"),
-		url("@/assets/fonts/inter/Inter-SemiBoldItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 500;
-	src:
-		local("Inter-Medium"),
-		url("@/assets/fonts/inter/Inter-Medium.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 500;
-	src:
-		local("Inter-MediumItalic"),
-		url("@/assets/fonts/inter/Inter-MediumItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		local("Inter-Regular"),
-		url("@/assets/fonts/inter/Inter-Regular.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 400;
-	src:
-		local("Inter-Italic"),
-		url("@/assets/fonts/inter/Inter-RegularItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		local("Inter-Light"),
-		url("@/assets/fonts/inter/Inter-Light.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 300;
-	src:
-		local("Inter-LightItalic"),
-		url("@/assets/fonts/inter/Inter-LightItalic.ttf") format("truetype");
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("@/assets/fonts/inter/Inter-ExtraBold.woff2") format("woff2");
 }
 
-// CIRCULAR
-
 @font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 900;
-	src:
-		local("CircularStd-Black"),
-		url("@/assets/fonts/circular/CircularStd-Black.ttf") format("truetype");
+  font-family: 'CircularStd';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("@/assets/fonts/circular/CircularStd-Book.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 900;
-	src:
-		local("CircularStd-BlackItalic"),
-		url("@/assets/fonts/circular/CircularStd-BlackItalic.ttf") format("truetype");
+  font-family: 'CircularStd';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("@/assets/fonts/circular/CircularStd-Bold.woff2") format("woff2");
 }
 @font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 700;
-	src:
-		local("CircularStd-Bold"),
-		url("@/assets/fonts/circular/CircularStd-Bold.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 700;
-	src:
-		local("CircularStd-BoldItalic"),
-		url("@/assets/fonts/circular/CircularStd-BoldItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 500;
-	src:
-		local("CircularStd-Medium"),
-		url("@/assets/fonts/circular/CircularStd-Medium.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 500;
-	src:
-		local("CircularStd-MediumItalic"),
-		url("@/assets/fonts/circular/CircularStd-MediumItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		local("CircularStd-Book"),
-		url("@/assets/fonts/circular/CircularStd-Book.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 400;
-	src:
-		local("CircularStd-BookItalic"),
-		url("@/assets/fonts/circular/CircularStd-BookItalic.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		local("CircularStd-Light"),
-		url("@/assets/fonts/circular/CircularStd-Light.ttf") format("truetype");
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 300;
-	src:
-		local("CircularStd-LightItalic"),
-		url("@/assets/fonts/circular/CircularStd-LightItalic.ttf") format("truetype");
+  font-family: 'CircularStd';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("@/assets/fonts/circular/CircularStd-Black.woff2") format("woff2");
 }

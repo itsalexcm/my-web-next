@@ -21,32 +21,30 @@
   });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .case-pilars {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-10x);
-  .pilar-item {
-    flex: 1 1 300px;
-    .pilar-icon {
-      display: inline-flex;
-      background-color: var(--bg-secondary);
-      border-radius: var(--spacing-4x);
-      padding: var(--spacing-4x);
-      margin-bottom: var(--spacing-6x);
-      transition: background-color .3s ease;
-      svg {
-        width: 30px;
-        height: 30px;
-      }
-    }
+}
+.pilar-item {
+  flex: 1 1 300px;
+}
+.pilar-icon {
+  display: inline-flex;
+  background-color: var(--bg-secondary);
+  border-radius: var(--spacing-4x);
+  padding: var(--spacing-4x);
+  margin-bottom: var(--spacing-6x);
+  transition: background-color .3s ease;
+  :deep(svg) {
+    width: 30px;
+    height: 30px;
   }
 }
-@media (max-width: 720px) {
-  .case-pilars {
-    .pilar-item {
-      flex: 1 1 100%;
-    }
+@include mobile {
+  .pilar-item {
+    flex: 1 1 100%;
   }
 }
 </style>

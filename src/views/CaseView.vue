@@ -1,8 +1,5 @@
 <template>
-  <LayoutComponent
-    :isCaseView="true"
-    :caseData="caseData"
-  >
+    <LayoutComponent :case-data="caseData">
     <article class="case">
       <div class="case-top">
         <div v-if="caseData?.tags && caseData?.tags.length" class="case-tags">
@@ -20,24 +17,22 @@
       <component
         v-for="(block, index) in caseData?.components"
         :is="getComponent(block.type)"
-        :key="index"
+        :key="`${block.type}-${index}`"
         v-bind="block.data"
-        :customMargin="block.data?.customMargin"
-        :customMargin0="block.data?.customMargin0"
       />
     </article>
     <div class="case-nav" v-if="prevCase || nextCase">
       <RouterLink
         v-if="prevCase"
         :to="`/work/${prevCase.id}`"
-        class="nav-button prev text regular"
+        class="btn-pill nav-button prev text regular"
       >
         ← Prev
       </RouterLink>
       <RouterLink
         v-if="nextCase"
         :to="`/work/${nextCase.id}`"
-        class="nav-button next text regular"
+        class="btn-pill nav-button next text regular"
       >
         Next →
       </RouterLink>
@@ -46,7 +41,7 @@
 </template>
 
 <script setup>
-  import { computed, onMounted, watch } from 'vue'
+  import { computed } from 'vue'
   import { useRoute } from 'vue-router'
   import { projects } from '@/data/projects.js'
   import LayoutComponent from '@/components/LayoutComponent.vue'
@@ -57,8 +52,6 @@
   import CaseMedia from '@/components/CaseMedia.vue'
   import CaseLine from '@/components/CaseLine.vue'
   import CarouselComponent from '@/components/CarouselComponent.vue'
-  import SliderComponent from '@/components/SliderComponent.vue'
-  import { initImageZoom } from '@/composables/useImageZoom.js'
 
   const route = useRoute()
   const caseData = computed(() => projects.find(p => p.id === route.params.id))
@@ -73,65 +66,40 @@
     CasePilars,
     CaseMedia,
     CaseLine,
-    CarouselComponent,
-    SliderComponent
+    CarouselComponent
   }
 
   const getComponent = (type) => componentMap[type] || null
-
-  onMounted(() => {
-    initImageZoom()
-  })
-
-  // Re-init image zoom when navigating between cases in the same component instance
-  watch(
-    () => route.params.id,
-    () => {
-      // Close any open fullscreen overlays when navigating
-      document.querySelectorAll('.case-img-fullscreen').forEach(overlay => overlay.remove());
-      document.querySelectorAll('.case-img.hidden').forEach(img => img.classList.remove('hidden'));
-
-      // Give Vue a tick to render new DOM before binding
-      requestAnimationFrame(() => initImageZoom());
-    }
-  );
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .case {
   display: block;
-  .case-top {
-    max-width: var(--width-md);
-    text-align: center;
-    margin: 0 auto var(--spacing-30x) auto;
-    .case-tags {
-      justify-content: center;
-    }
-    .case-overview {
-      margin-top: 40px;
-    }
+}
+.case-top {
+  max-width: var(--width-md);
+  text-align: center;
+  margin: 0 auto var(--spacing-30x) auto;
+  :deep(.case-tags) {
+    justify-content: center;
   }
+}
+.case-overview {
+  margin-top: var(--spacing-10x);
 }
 .case-nav {
   display: flex;
   justify-content: center;
   gap: var(--spacing-6x);
   margin: var(--spacing-30x) auto 0 auto;
-  padding-top: var(--spacing-20x) auto 0 auto;
-  .nav-button {
-    color: #1A1A1A;
-    padding: var(--spacing-3x) var(--spacing-5x);
-    display: inline-flex;
-    transition: all 0.3s ease;
-    background-color: var(--accent-primary);
-    border-radius: var(--spacing-30x);
-    &.prev {
-      text-align: left;
-    }
-
-    &.next {
-      text-align: right;
-    }
+  padding-top: var(--spacing-20x);
+}
+.nav-button {
+  &.prev {
+    text-align: left;
+  }
+  &.next {
+    text-align: right;
   }
 }
 </style>

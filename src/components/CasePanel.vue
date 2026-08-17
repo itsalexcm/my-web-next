@@ -17,7 +17,7 @@
         <h4 v-if="panel.label" class="panel-heading" v-html="panel.label"></h4>
         <p v-if="panel.text" class="text regular" v-html="panel.text"></p>
         <ul v-else-if="panel.list && panel.list.length" class="text regular list">
-          <li v-for="(item, index) in panel.list" :key="index" v-html="item"></li>
+          <li v-for="(item, itemIndex) in panel.list" :key="itemIndex" v-html="item"></li>
         </ul>
       </div>
     </div>
@@ -39,7 +39,7 @@
   })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .case-panels {
     display: flex;
     justify-content: space-between;
@@ -82,8 +82,8 @@
           ul {
             li {
               display: table;
-              span.bold {
-                font-weight: 700;
+              :deep(span.bold) {
+                font-weight: var(--font-weight-bold);
               }
               &::before {
                 display: table-cell;
@@ -91,7 +91,7 @@
                 padding-inline-end: var(--spacing-4x);
                 content: "→";
                 color: var(--text-accent);
-                font-weight: 700;
+                font-weight: var(--font-weight-bold);
               }
             }
           }
@@ -156,7 +156,7 @@
       }
     }
   }
-  @media (max-width: 720px) {
+  @include mobile {
     .case-panels {
       flex-wrap: wrap;
       &.gamma {

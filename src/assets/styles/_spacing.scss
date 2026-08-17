@@ -1,3 +1,5 @@
+@import './mixins';
+
 :root {
 	--spacing-base: 4px;
 	--spacing-1x: var(--spacing-base);
@@ -11,19 +13,19 @@
 	--spacing-9x: calc(var(--spacing-base) * 9);
 	--spacing-10x: calc(var(--spacing-base) * 10);
 	--spacing-12x: calc(var(--spacing-base) * 12);
-	--spacing-14x: calc(var(--spacing-base) * 12);
+	--spacing-14x: calc(var(--spacing-base) * 14);
 	--spacing-16x: calc(var(--spacing-base) * 16);
 	--spacing-18x: calc(var(--spacing-base) * 18);
 	--spacing-20x: calc(var(--spacing-base) * 20);
 	--spacing-30x: calc(var(--spacing-base) * 30);
-	
+
 	--width-xl: 1200px;
 	--width-lg: 960px;
 	--width-md: 720px;
 	--width-sm: 640px;
 	--width-xs: 540px;
 }
-@media (max-width: 720px) {
+@include mobile {
   :root {
     --spacing-base: 3px;
   }

@@ -1,0 +1,117 @@
+@import './mixins';
+
+.case-img + .case-img {
+  &:not(.wrap) {
+    margin-top: var(--spacing-8x);
+  }
+}
+.case-img {
+  position: relative;
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: var(--spacing-4x);
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: background-color .3s ease;
+  &.wrap {
+    flex: 1 1 calc(50% - var(--spacing-8x));
+  }
+  &.hidden {
+    visibility: hidden;
+  }
+  &.transparent {
+    background: transparent;
+  }
+  &.margin-top {
+    margin-top: var(--spacing-6x);
+  }
+  &.case-img-inline {
+    background: transparent;
+    border-radius: 0;
+  }
+  &.radius-none {
+    border-radius: 0;
+  }
+  &.radius-sm {
+    border-radius: var(--spacing-2x);
+  }
+  &.radius-md {
+    border-radius: var(--spacing-4x);
+  }
+  &.radius-lg {
+    border-radius: var(--spacing-6x);
+  }
+  &.radius-custom-00 {
+    border-radius: 0;
+  }
+  &.radius-custom-01 {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &.radius-custom-02 {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+.case-img-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  appearance: none;
+  border: none;
+  cursor: zoom-out;
+  z-index: 10000;
+}
+.case-img-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(var(--bg-primary-rgb), 0.9);
+  z-index: 9999;
+  overflow: hidden;
+  .case-img-bis {
+    position: absolute;
+    transform-origin: top left;
+    transform: translate(0, 0) scale(1);
+    transition: transform .3s ease-in-out;
+    img {
+      border-radius: 0;
+    }
+  }
+}
+.case-img button.case-img-open {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  appearance: none;
+  border: none;
+  cursor: zoom-in;
+}
+.case-caption {
+  margin-top: var(--spacing-4x);
+  .caption {
+    color: var(--text-caption);
+  }
+}
+@include mobile {
+  .case-img {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

@@ -1,32 +1,69 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { logEvent } from 'firebase/analytics';
 import { analytics } from '@/firebase-config';
-import Home from '../views/HomeView.vue';
-import About from '../views/AboutView.vue';
-import Past from '../views/PastView.vue';
-import Case from '../views/CaseView.vue';
+import { projects } from '@/data/projects.js';
+import { site } from '@/data/site.js';
 
 const routes = [
-  { path: '/', component: Home, name: 'home', meta: { title: 'Alex Cerezo | Product Designer' } },
-  { path: '/about', component: About, name: 'about', meta: { title: 'Alex Cerezo | About' } },
-  { path: '/past-work', component: Past, name: 'past-work', meta: { title: 'Alex Cerezo | Past work' } },
-  { path: '/work/:id', component: Case, name: 'case' }
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('../views/HomeView.vue'),
+    meta: { title: site.titles.home }
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/AboutView.vue'),
+    meta: { title: site.titles.about }
+  },
+  {
+    path: '/past-work',
+    name: 'past-work',
+    component: () => import('../views/PastView.vue'),
+    meta: { title: site.titles.pastWork }
+  },
+  {
+    path: '/work/:id',
+    name: 'case',
+    component: () => import('../views/CaseView.vue'),
+    beforeEnter: (to) => {
+      const exists = projects.some((project) => project.id === to.params.id);
+      if (!exists) return { name: 'not-found', replace: true };
+      return true;
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('../views/NotFoundView.vue'),
+    meta: { title: site.titles.notFound }
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  // eslint-disable-next-line no-unused-vars
   scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition;
     return { top: 0 };
   }
 });
 
 router.afterEach((to) => {
-  logEvent(analytics, 'page_view', {
-    page_path: to.fullPath,
-    page_title: to.meta.title || 'Default Title'
-  });
+  let title = to.meta.title || site.name;
+  if (to.name === 'case') {
+    const project = projects.find((item) => item.id === to.params.id);
+    if (project) title = `${site.name} | ${project.title}`;
+  }
+  document.title = title;
+
+  if (analytics) {
+    logEvent(analytics, 'page_view', {
+      page_path: to.fullPath,
+      page_title: title
+    });
+  }
 });
 
 export default router;

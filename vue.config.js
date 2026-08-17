@@ -3,7 +3,19 @@ const webpack = require('webpack');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  lintOnSave: false,
+  lintOnSave: true,
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: (content, loaderContext) => {
+          if (loaderContext.resourcePath.includes('_mixins.scss')) {
+            return content;
+          }
+          return `@import "@/assets/styles/_mixins.scss";\n${content}`;
+        }
+      }
+    }
+  },
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
